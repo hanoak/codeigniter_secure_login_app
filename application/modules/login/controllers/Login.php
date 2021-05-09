@@ -92,7 +92,7 @@ class Login extends MX_Controller {
 
             }  else { redirect('login'); }
 
-    	} 
+    	} else { redirect('login'); }
 
     }
 
