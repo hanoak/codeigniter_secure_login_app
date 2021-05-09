@@ -92,7 +92,7 @@ class Login extends MX_Controller {
 
             }  else { redirect('login'); }
 
-    	} else { redirect('login'); }
+    	} 
 
     }
 
@@ -155,7 +155,25 @@ class Login extends MX_Controller {
 
     }
 
+    public function logout() {
 
+        if($this->isLoggedIn()) {
+
+            $aid = $this->session->userdata("aid");
+            $logoutTime = date('Y-m-d H:i:s');
+
+            $this->Login_model->updateVerifyKey($aid, $this->hasher->generateVerifyKey());
+
+            $this->Login_model->setUserLogoutDetails($aid,$logoutTime);
+
+            $userData = array('aid','verify_key','hash','token');
+
+            $this->session->unset_userdata($userData);
+            $this->session->sess_destroy();
+        }
+        
+       
+    }
 
    
 }

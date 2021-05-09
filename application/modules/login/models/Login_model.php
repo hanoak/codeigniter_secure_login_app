@@ -62,6 +62,16 @@ class Login_model extends CI_Model {
 
     }
 
+    public function setUserLogoutDetails($aid,$logoutTime) { 
+
+        $this->db->trans_begin();
+
+        $this->db->set('last_logout_time', $logoutTime)
+                 ->where('aid', $aid)
+                 ->update('car_admins');        
+
+        return $this->trans_ends();
+    }
 
 
 
