@@ -22,7 +22,7 @@ class Login_model extends CI_Model {
     public function verifySessDataInDB($sessData) {
 
         $data = $this->db->select('*')
-                        ->from('car_admins')
+                        ->from('admins')
                         ->where($sessData)->get()->row();
 
         return ( is_null($data) ) ? FALSE : TRUE;
@@ -31,7 +31,7 @@ class Login_model extends CI_Model {
 
     public function getSaltPassIfActive($email = '') {
         return $this->db->select('aid,pwd,salt,verify_key')
-                        ->from('car_admins')
+                        ->from('admins')
                         ->where('email', $email)
                         ->get()->row();
     }
@@ -42,7 +42,7 @@ class Login_model extends CI_Model {
 
         $this->db->set('verify_key', $key)
                  ->where('aid', $aid)
-                 ->update('car_admins');
+                 ->update('admins');
 
         return $this->trans_ends();
     }
@@ -55,7 +55,7 @@ class Login_model extends CI_Model {
                  ->set('last_ip_address', $arr['ip_address'])
                  ->set('last_logout_time', NULL)
                  ->where('aid', $arr['aid'])
-                 ->update('car_admins');
+                 ->update('admins');
 
 
         return $this->trans_ends();
@@ -68,7 +68,7 @@ class Login_model extends CI_Model {
 
         $this->db->set('last_logout_time', $logoutTime)
                  ->where('aid', $aid)
-                 ->update('car_admins');        
+                 ->update('admins');        
 
         return $this->trans_ends();
     }
