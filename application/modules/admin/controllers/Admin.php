@@ -17,7 +17,6 @@ class Admin extends MX_Controller {
         }
 
         $this->load->model('Admin_model');
-        $this->lang->load('admin_messages');
         $this->aid = $this->session->userdata("aid");
 
     }
