@@ -27,6 +27,10 @@ class Admin extends MX_Controller {
         $data['token'] = $this->token;
         $data['page'] = 'Dashboard';
 
+        //use html_escape() method to escape the string while rendering it in your views to avoid XSS attack
+        // I'm not rendering any data from DB in any views right now, but you should...
+        // exmaple: html_escape($this->Admin_model->dataFromDataBase());
+
         $data['body'] = $this->load->view('dashboard', $data, TRUE);
         $this->load->view('layout', $data);
     }
