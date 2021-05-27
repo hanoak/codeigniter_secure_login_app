@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="card">
   <div class="card-header">
-    Cars
+    Laptops
   </div>
   <div class="card-body">
   
